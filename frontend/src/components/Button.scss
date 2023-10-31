@@ -1,0 +1,18 @@
+@import '../utilities/variables';
+
+.Button {
+    background-color: $colorBlue;
+    border: none;
+    border-radius: 50px;
+    color: $colorWhite;
+    cursor: pointer;
+    font-family: $FontSec;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+}
+
+
+.Secondary {
+    background-color: $colorTeal;
+}
