@@ -7,7 +7,7 @@ const Button = (props) => {
 
     return (
         <button
-            className={secondary ? "Button Secondary" : "Button"}
+            className={`Button ${secondary && 'Secondary'}`}
         >
             {buttonText}
         </button>
