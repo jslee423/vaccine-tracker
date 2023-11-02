@@ -1,0 +1,29 @@
+@import '../utilities/variables';
+
+.NotFound {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $colorBlack;
+
+    h1 {
+        font-family: $FontMain;
+        font-size: 8rem;
+        line-height: 1;
+    }
+
+    h2 {
+        font-family: $FontSec;
+        margin-bottom: 1rem;
+    }
+
+    img {
+        width: 400px;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+}
