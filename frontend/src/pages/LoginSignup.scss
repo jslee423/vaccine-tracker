@@ -1,0 +1,9 @@
+@import '../utilities/variables';
+
+.LoginSignup {
+    width: 100%;
+    height: calc(100vh - $heightNavbar);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
