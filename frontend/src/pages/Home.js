@@ -17,7 +17,7 @@ const Home = () => {
                     <h2>Sign up for free today!</h2>
                     
                     <div className='HeaderButtons'>
-                        <Button><NavLink to="/loginSignup">Sign up for free</NavLink></Button>
+                        <Button><NavLink to="/loginSignup/signup">Sign up for free</NavLink></Button>
                         <Button secondary><NavLink to="/about">Learn more.</NavLink></Button>
                     </div>
                 </div>
