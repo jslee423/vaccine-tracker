@@ -7,6 +7,8 @@ import './LoginForm.scss'
 
 const LoginForm = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
     return (
         <div className='LoginForm'>
@@ -18,6 +20,9 @@ const LoginForm = () => {
                         type='email'
                         id='email'
                         placeholder='Email ID'
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                        required
                     />
                 </fieldset>
                 <fieldset className='pass-wrapper'>
@@ -26,6 +31,9 @@ const LoginForm = () => {
                         type={showPassword ? 'text' : 'password'}
                         id='password'
                         placeholder='Password'
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        required
                     />
                     <img
                         src={showPassword ? view : hide}
