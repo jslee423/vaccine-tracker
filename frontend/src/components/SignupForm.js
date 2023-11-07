@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import Button from './Button'
 import hide from '../images/hide.png'
 import view from '../images/view.png'
 import './SignupForm.scss'
+import { SAVE_USER_TO_DB } from '../state/user/userAction'
 
 const SignupForm = () => {
     const [showPassword, setShowPassword] = useState(false)
@@ -16,11 +18,30 @@ const SignupForm = () => {
     const [gender, setGender] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPass, setConfirmPass] = useState('')
+    const [error, setError] = useState('')
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        const user = {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+            DOB: dob,
+            Gender: gender,
+            userType: userType,
+            adminCode: adminCode
+        }
+        dispatch(SAVE_USER_TO_DB(user, navigate, setError))
+    }
 
     return (
         <div className='SignupForm'>
             <h1>Sign Up</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <fieldset className='userTypeFields'>
                     <span>
                         <input
@@ -130,7 +151,10 @@ const SignupForm = () => {
                         onClick={() => setShowPassword((prev) => !prev)}
                     />
                 </fieldset>
+                {error ? <p className="errorMessage" aria-live="assertive">*{error}*</p>
+                :
                 <p>All fields required.</p>
+                }
                 <Button>Register</Button>
             </form>
             <p>Already have an account? <NavLink to="/loginSignup/login">Login</NavLink></p>

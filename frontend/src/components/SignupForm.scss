@@ -20,6 +20,12 @@
         }
     }
 
+    .errorMessage {
+        margin: 0;
+        color: red;
+        font-weight: bold;
+    }
+
     form {
         display: flex;
         flex-direction: column;
@@ -29,13 +35,13 @@
         input[type="text"], input[type="email"], input[type="password"] {
             width: 20rem;
             padding: 10px;
-            border-color: $colorLightGray;
+            border: 1px solid $colorLightGray;
             border-radius: 20px;
         }
 
         input[type="date"] {
             width: 13rem;
-            border-color: $colorLightGray;
+            border: 1px solid $colorLightGray;
             border-radius: 20px;
             padding: 10px;
         }
@@ -71,9 +77,17 @@
 
         select {
             width: 13rem;
-            border-color: $colorLightGray;
+            border: 1px solid $colorLightGray;
             border-radius: 20px;
             padding: 10px;
+
+            //change dropdown arrow style
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+            background-repeat: no-repeat;
+            background-position-x: 97%;
+            background-position-y: 5px;
         }
 
         .pass-wrapper {
