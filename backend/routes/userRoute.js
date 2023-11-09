@@ -39,9 +39,11 @@ route.post('/login', (req, res) => {
     userDataModel.findOne({email: user.email})
     .then((existingUser) => {
         if (existingUser.password === user.password) {
+            console.log("login successful")
             res.status(200).send(existingUser)
         } else {
-            res.status(200).send('Incorrect password')
+            console.log("incorrect password")
+            res.status(400).send('Incorrect password')
         }
     })
     .catch((error) => {

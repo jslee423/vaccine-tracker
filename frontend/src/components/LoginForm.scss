@@ -20,6 +20,13 @@
         }
     }
 
+    .errorMessage {
+        margin: 0;
+        color: red;
+        font-weight: bold;
+        text-align: center;
+    }
+
     form {
         display: flex;
         flex-direction: column;
@@ -29,7 +36,7 @@
         input {
             width: 20rem;
             padding: 10px;
-            border-color: $colorLightGray;
+            border: 1px solid $colorLightGray;
             border-radius: 20px;
         }
 

@@ -22,3 +22,18 @@ export const SAVE_USER_TO_DB = (user, navigate, setError) => {
         })
     }
 }
+
+export const LOGIN_USER = (email, password, navigate, setError) => {
+    return(dispatch) => {
+        axios.post('http://localhost:9000/user/login', {email: email, password: password})
+        .then((response) => {
+            const signedUser = response.data
+            dispatch(ADD_USER_TO_STORE(signedUser))
+            navigate('/')
+        })
+        .catch((error) => {
+            console.log("error during login: ", error)
+            setError(error.response.data)
+        })
+    }
+}
