@@ -19,11 +19,16 @@ const SignupForm = () => {
     const [password, setPassword] = useState('')
     const [confirmPass, setConfirmPass] = useState('')
     const [error, setError] = useState('')
+    const [approved, setApproved] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        if (userType === 'admin') {
+            setApproved(true)
+        }
 
         const user = {
             firstName: firstName,
@@ -33,7 +38,8 @@ const SignupForm = () => {
             DOB: dob,
             Gender: gender,
             userType: userType,
-            adminCode: adminCode
+            adminCode: adminCode,
+            approved: approved
         }
         dispatch(SAVE_USER_TO_DB(user, navigate, setError))
     }
@@ -113,7 +119,6 @@ const SignupForm = () => {
                 </fieldset>
                 <fieldset className='genderField'>
                     <label htmlFor='gender'>Gender:</label>
-                    {/* <input type="date" id="dob" /> */}
                     <select name="gender" id="gender" defaultValue="" onChange={(e) => setGender(e.target.value)} required>
                         <option value="" disabled>Select your option...</option>
                         <option value="male">Male</option>

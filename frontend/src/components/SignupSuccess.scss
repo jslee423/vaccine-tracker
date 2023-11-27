@@ -1,0 +1,33 @@
+@import '../utilities/variables';
+
+.SignupSuccess {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        font-family: $FontMain;
+        margin-bottom: 1rem;
+    }
+
+    p, h4 {
+        font-family: $FontSec;
+        margin-bottom: 0.5rem;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        align-items: center;
+
+        .Button {
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+    }
+    
+}
