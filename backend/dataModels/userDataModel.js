@@ -12,7 +12,8 @@ let userSchema = new schemaObj(
         DOB: {type: Date, require: true},
         Gender: {type: String, require: true},
         userType: {type: String, require: true},
-        adminCode: {type: String}
+        adminCode: {type: String},
+        approved: {type: Boolean}
     }
 )
 

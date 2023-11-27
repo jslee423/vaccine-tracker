@@ -39,8 +39,12 @@ route.post('/login', (req, res) => {
     userDataModel.findOne({email: user.email})
     .then((existingUser) => {
         if (existingUser.password === user.password) {
-            console.log("login successful")
-            res.status(200).send(existingUser)
+            if (existingUser.approved) {
+                console.log("login successful")
+                res.status(200).send(existingUser)
+            } else {
+                res.status(400).send("Account not yet approved")
+            }
         } else {
             console.log("incorrect password")
             res.status(400).send('Incorrect password')
@@ -49,6 +53,18 @@ route.post('/login', (req, res) => {
     .catch((error) => {
         console.log("login user not found, error: ", error)
         res.status(404).send('User not found')
+    })
+})
+
+route.post('/getusers', (req, res) => {
+    userDataModel.find({approved: false})
+    .then((foundUsers) => {
+        console.log("unapproved users found: ", foundUsers)
+        res.status(200).send(foundUsers)
+    })
+    .catch((error) => {
+        console.log("no users found", error)
+        res.status(400).send("No users found")
     })
 })
 
