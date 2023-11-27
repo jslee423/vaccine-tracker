@@ -13,8 +13,12 @@ export const SAVE_USER_TO_DB = (user, navigate, setError) => {
         axios.post('http://localhost:9000/user/signup', user)
         .then((response) => {
             const signedUser = response.data
-            dispatch(ADD_USER_TO_STORE(signedUser))
-            navigate('/')
+            if (signedUser.userType === "admin") {
+                dispatch(ADD_USER_TO_STORE(signedUser))
+                navigate('/')
+            } else {
+                navigate('/loginSignup/signup-success')
+            }
         })
         .catch((error) => {
             console.log("error saving user to db: ", error)
@@ -34,6 +38,27 @@ export const LOGIN_USER = (email, password, navigate, setError) => {
         .catch((error) => {
             console.log("error during login: ", error)
             setError(error.response.data)
+        })
+    }
+}
+
+export const ADD_APPROVAL_LIST = (users) => {
+    console.log("add approval list action", users)
+    return {
+        type: actionTypes.ADD_APPROVAL_LIST,
+        payload: users
+    }
+}
+
+export const GET_UNAPPROVED_USERS = () => {
+    return(dispatch) => {
+        axios.post('http://localhost:9000/user/getusers', {})
+        .then((response) => {
+            console.log("get user response: ", response.data)
+            dispatch(ADD_APPROVAL_LIST(response.data))
+        })
+        .catch((error) => {
+            console.log("error retrieving users")
         })
     }
 }

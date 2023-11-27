@@ -8,10 +8,14 @@ const initialState = {
     DOB: "",
     Gender: "",
     userType: "",
-    adminCode: ""
+    adminCode: "",
+    approved: "",
+    approvalList: []
 }
 
 const userReducer = (state = initialState, action) => {
+    console.log("reducer state: ", state)
+    console.log("reducer action: ", action)
     switch (action.type) {
         case actionTypes.ADD_USER_TO_STORE:
             const newState = action.payload
@@ -19,6 +23,11 @@ const userReducer = (state = initialState, action) => {
                 // ...state,
                 // user: action.payload
                 ...newState
+            }
+        case actionTypes.ADD_APPROVAL_LIST:
+            return {
+                ...state,
+                approvalList: action.payload
             }
         default:
             return state
