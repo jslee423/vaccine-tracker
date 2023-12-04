@@ -1,8 +1,8 @@
 import React from 'react'
 import headerImg from '../images/header.jpg'
 import Button from '../components/Button'
-import './Home.scss'
 import { NavLink } from 'react-router-dom'
+import './Home.scss'
 
 const Home = () => {
     return (
@@ -21,6 +21,9 @@ const Home = () => {
                         <Button secondary><NavLink to="/about">Learn more.</NavLink></Button>
                     </div>
                 </div>
+            </div>
+            <div className='HomeFeatures'>
+                <h1>test</h1>
             </div>
         </div>
     )
